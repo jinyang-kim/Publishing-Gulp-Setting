@@ -1,0 +1,14 @@
+{
+  "name": "publishing-gulp-setting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "jinyang_kim",
+    "email": "sunlover011@gmail.com"
+  },
+  "license": "ISC"
+}
