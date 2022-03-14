@@ -1,10 +1,14 @@
 {
   "name": "publishing-gulp-setting",
   "version": "1.0.0",
-  "description": "",
+  "description": "publishing-gulp-setting",
+  "repository": "https://github.com/JayYang-Kim/Publishing-Gulp-Setting",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp dev",
+    "start": "gulp",
+    "build": "gulp build",
+    "deploy": "gulp deploy"
   },
   "author": {
     "name": "jinyang_kim",
