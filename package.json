@@ -14,5 +14,15 @@
     "name": "jinyang_kim",
     "email": "sunlover011@gmail.com"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
+    "gulp": "^4.0.2",
+    "gulp-pug": "^5.0.0"
+  },
+  "dependencies": {
+    "del": "^6.0.0"
+  }
 }
