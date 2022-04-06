@@ -19,10 +19,20 @@
     "@babel/core": "^7.17.7",
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.7",
+    "autoprefixer": "^10.4.4",
     "gulp": "^4.0.2",
-    "gulp-pug": "^5.0.0"
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.0.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-webserver": "^0.9.1",
+    "sass": "^1.49.11"
   },
   "dependencies": {
-    "del": "^6.0.0"
+    "del": "^6.0.0",
+    "gulp-plumber": "^1.2.1"
   }
 }

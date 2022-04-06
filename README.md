@@ -9,9 +9,16 @@ Gulp JS Site (URL) : [https://gulpjs.com/](https://gulpjs.com/)
 -
 1) node.js와 npm이 먼저 미리 설치되어 있어야 한다.
  - [https://nodejs.org/ko/](https://nodejs.org/ko/) 페이지에서 LTS 버전으로 설치
+ - node 설치 확인
+   - node -v
+   - npm -v
 2) gulp 설치
  - npm version : npm install gulp-cli -g
  - yarn version : yarn add gulp-cli
+ - gulp 설치 확인 : gulp -v
+3) gulp 실행 명령어
+ - gulp : gulp task_name;
+ - yarn : yarn task_name;
 
 **2. 프로젝트 경로 (Directory)**
 - 
