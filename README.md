@@ -6,6 +6,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 * Gulp JS Site (URL) : [https://gulpjs.com/](https://gulpjs.com/)
 * Gulp Packages Searching : https://www.npmjs.com/
 * CSS 네이밍 규칙(BEM / Block__Element--Modifier) : https://nykim.work/15
+* 벤더 프리픽스(Vendor Prefix) Browsers List : 전 세계 1% 이상 브라우저, 최근 2개 버전의 브라우저, firefox 4 이상, safari 7~8, IE 10~11
 
 **1. 필수 설치 (required)**
 -
@@ -33,7 +34,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
     * src (원본 소스 파일)
       * fonts (웹 폰트)
       * html (HTML)
-      * images (Images)
+      * img (Images)
       * js (JavaScript)
       * scss (SCSS)
     * .gitignore

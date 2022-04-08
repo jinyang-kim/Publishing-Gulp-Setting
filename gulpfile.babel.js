@@ -12,6 +12,9 @@ import babelify from "babelify";
 import uglify from "gulp-uglify";
 import plumber from "gulp-plumber";
 import ghPages from "gulp-gh-pages";
+import htmlExtend from "gulp-html-extend";
+import htmlMin from "gulp-htmlmin";
+import gsprite from "gulp.spritesmith";
 
 const sass = require('gulp-sass')(require('sass'));
 
@@ -20,16 +23,26 @@ const routes = {
 	pug: {
 		watch: "src/**/*.pug",
 		src: "src/*.pug",
-		dest: "build"
+		dest: "build/pug"
 	},
 	html: {
 		watch: "src/html/**/*.html",
-		src: "src/html/*",
+		src: "src/html/**/*.html",
+		except: "!src/html/_components/*.html",
 		dest: "build/html"
 	},
+	index_html: {
+		watch: "src/index.html",
+		src: "src/index.html",
+		dest: "build"
+	},
 	img: {
-		src: "src/img/*",
+		src: "src/img/**/*",
 		dest: "build/img"
+	},
+	img_sprite: {
+		src: "src/img/**/*.png",
+		dest: "build/img_sprite"
 	},
 	scss: {
 		watch: "src/scss/**/*.scss",
@@ -52,13 +65,6 @@ const routes = {
 }
 
 /* Gulp Tasks */
-const pug = () =>
-	gulp
-		.src(routes.pug.src)
-		.pipe(plumber())
-		.pipe(gpug())
-		.pipe(gulp.dest(routes.pug.dest));
-
 const clean = () => del(["build", ".publish"]);
 
 const webserver = () => 
@@ -77,11 +83,40 @@ const gh = () =>
 		.pipe(ghPages());
 
 const watch = () => {
+	gulp.watch(routes.index_html.watch, index_html);
+	gulp.watch(routes.html.watch, html);
 	gulp.watch(routes.pug.watch, pug);
 	gulp.watch(routes.scss.watch, styles);
 	gulp.watch(routes.js.watch, js);
 	// gulp.watch(routes.img.src, img);
 }
+
+const index_html = () =>
+	gulp
+		.src(routes.index_html.src)
+		.pipe(plumber())
+		.pipe(
+      htmlExtend({ annotations:false, verbose:false })
+    )
+    .pipe(htmlMin({ collapseWhitespace: false }))
+    .pipe(gulp.dest(routes.index_html.dest));
+
+const html = () =>
+	gulp
+		.src([routes.html.src, routes.html.except])
+		.pipe(plumber())
+		.pipe(
+      htmlExtend({ annotations:false, verbose:false })
+    )
+    .pipe(htmlMin({ collapseWhitespace: false }))
+    .pipe(gulp.dest(routes.html.dest));
+
+const pug = () =>
+	gulp
+		.src(routes.pug.src)
+		.pipe(plumber())
+		.pipe(gpug())
+		.pipe(gulp.dest(routes.pug.dest));
 
 const js = () => 
 	gulp	
@@ -105,6 +140,17 @@ const img = () =>
 		.pipe(gimagemin())
 		.pipe(gulp.dest(routes.img.dest));
 
+const sprite = () =>
+	gulp
+		.src(routes.img_sprite.src)
+		.pipe(plumber())
+		.pipe(gsprite({
+			imgName: 'sprite.png',
+			cssName: 'sprite.css',
+			padding: 10
+		}))
+		.pipe(gulp.dest(routes.img_sprite.dest));
+
 const styles = () => 
 	gulp
 		.src(routes.scss.src)
@@ -117,9 +163,9 @@ const styles = () =>
 		.pipe(gulp.dest(routes.scss.dest));
 
 /* Gulp Builds */
-const prepare = gulp.series([clean, img]);
+const prepare = gulp.series([clean, img, sprite]);
 
-const assets = gulp.series([pug, styles, js]);
+const assets = gulp.series([pug, index_html, html, styles, js]);
 
 const live = gulp.parallel([webserver, watch]);
 
