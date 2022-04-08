@@ -37,6 +37,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
       * img (Images)
       * js (JavaScript)
       * scss (SCSS)
+      * index.html (webserver 실행 시 처음 실행되는 html)
     * .gitignore
     * gulpfile.js (Gulp 관리)
     * gulpfile.babel.js (Gulp JavaScript 관리)
@@ -45,4 +46,4 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 
 **3. 파일 추가 관련**
 - 
-* SCSS파일에서 언더스코어(_)를 붙이면 SASS한테 자기들을 Compile하지말고 사용만 하라고 알려주는것
+* 파일에서 언더스코어(_)를 붙이면 SASS한테 자기들을 Compile하지말고 사용만 하라고 알려주는것
