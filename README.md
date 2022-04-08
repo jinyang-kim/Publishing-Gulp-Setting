@@ -47,3 +47,11 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 **3. 파일 추가 관련**
 - 
 * 파일에서 언더스코어(_)를 붙이면 SASS한테 자기들을 Compile하지말고 사용만 하라고 알려주는것
+
+**4. Gulp Deploy Error**
+- 
+* Gulp Deploy 명령어 실행 시 오류가 나는 경우, node package 추가 설치 필요
+  * cd node_modules/gulp-gh-pages/  //플러그인 폴더로 이동
+  * npm install --save gift@0.10.2  //gift폴더 설치
+  * cd ../../                       
+  * gulp deploy 
