@@ -55,3 +55,13 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * npm install --save gift@0.10.2  //gift폴더 설치
   * cd ../../                       
   * gulp deploy 
+
+**5. Include Library Files**
+- 
+* HTML 작업 진행 시 필요한 기본 Files
+  * html5shiv.js
+  * html5shiv.min.js
+  * jquery-1.11.1.min.js
+  * jquery-2.1.3.min.js
+  * jquery-3.6.0.min.js
+  * respond.min.js
