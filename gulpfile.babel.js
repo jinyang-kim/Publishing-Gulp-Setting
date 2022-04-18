@@ -20,6 +20,13 @@ const sass = require('gulp-sass')(require('sass'));
 
 /* Files Directory */
 const routes = {
+	build: {
+		html: "build/html",
+		css: "build/css",
+		js: "build/js",
+		img: "build/img",
+		index: "build/index.html"
+	},
 	pug: {
 		watch: "src/**/*.pug",
 		src: "src/*.pug",
@@ -65,7 +72,7 @@ const routes = {
 }
 
 /* Gulp Tasks */
-const clean = () => del(["build", ".publish"]);
+const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index, ".publish"]);
 
 const webserver = () => 
 	gulp
