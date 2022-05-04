@@ -6,7 +6,9 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 * Gulp JS Site (URL) : [https://gulpjs.com/](https://gulpjs.com/)
 * Gulp Packages Searching : https://www.npmjs.com/
 * CSS 네이밍 규칙(BEM / Block__Element--Modifier) : https://nykim.work/15
-* 벤더 프리픽스(Vendor Prefix) Browsers List : 전 세계 1% 이상 브라우저, 최근 2개 버전의 브라우저, firefox 4 이상, safari 7-8, IE 10-11
+* Browsers List : 전 세계 1% 이상 브라우저, 최근 2개 버전의 브라우저, firefox 4 이상, safari 7-8, IE 10-11
+  * 벤더 프리픽스(Vendor Prefix) : 주요 웹 브라우저 공급자가 새로운 기능을 제공할 때 이전 버전의 웹 브라우저에서 그 사실을 알려주기 위해 사용하는 접두사(prefix)를 의미합니다.
+  * 벤더 프리픽스 관련 설명 : http://www.tcpschool.com/css/css3_module_vendorPrefix
 
 **1. 필수 설치 (required)**
 -
@@ -39,6 +41,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
       * scss (SCSS)
       * index.html (webserver 실행 시 처음 실행되는 html)
     * .gitignore
+    * .babelrc (하위 디렉토리나 파일에서 특정 플러그인이나 규칙을 실행할 때 사용)
     * gulpfile.js (Gulp 관리)
     * gulpfile.babel.js (Gulp JavaScript 관리)
     * package.json (node package 관리)
@@ -58,7 +61,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 
 **5. Include Library Files**
 - 
-* HTML 작업 진행 시 필요한 기본 Files
+* HTML 작업 진행 시 필요한 기본 Library Files (사용자 선택에 따라서 포함을 안시켜도 됩니다.)
   * html5shiv.js
   * html5shiv.min.js
   * jquery-1.11.1.min.js
