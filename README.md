@@ -33,12 +33,18 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 - 
 * gulp_setting
     * build (Compile Files)
+     * _lib / js, scss 파일로 외부에서 파일은 별도 관리 처리 (gulp task에서 제외시키기 위해서 별도 폴더 구성처리)
+     * fonts (Web Fonts)
     * src (원본 소스 파일)
+      * _components (HTML Include Components)
       * fonts (웹 폰트)
       * html (HTML)
       * img (Images)
-      * js (JavaScript)
+      * fonts (Web Fonts)
+      * js (JavaScript) / 해당 경로에 있는 js파일은 common.js 파일 하나로 합쳐집니다.
       * scss (SCSS)
+      * _scss (SCSS) / 공통 SCSS 및 variables 폴더
+        * mixins / SCSS Mixin 폴더
       * index.html (webserver 실행 시 처음 실행되는 html)
     * .gitignore
     * .babelrc (하위 디렉토리나 파일에서 특정 플러그인이나 규칙을 실행할 때 사용)
@@ -68,3 +74,4 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * jquery-2.1.3.min.js
   * jquery-3.6.0.min.js
   * respond.min.js
+  * lazysizes.min.js
