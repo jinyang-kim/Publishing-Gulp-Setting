@@ -1,0 +1,131 @@
+{
+	// Place your age-tech-pub 작업 영역 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"after": {
+		"prefix": "after",
+    "body": [
+      "after{",
+      "\tcontent:'';",
+      "\tdisplay:block;",
+      "\toverflow:hidden;",
+      "\twidth:$1;",
+      "\theight:$2;",
+      "}"
+    ],
+    "description": "after"
+  },
+	"before": {
+		"prefix": "before",
+    "body": [
+      "after{",
+      "\tcontent:'';",
+      "\tdisplay:block;",
+      "\toverflow:hidden;",
+      "\twidth:$1;",
+      "\theight:$2;",
+			"}"
+    ],
+    "description": "after"
+  },
+	"display: inline-block": {
+		"prefix": "disi",
+		"body": [
+			"display: inline-block;"
+		],
+		"description": "Log output to console"
+	}
+	,
+	"display: block": {
+		"prefix": "disb",
+		"body": [
+			"display: block;"
+		],
+		"description": "Log output to console"
+	}
+	,
+	"display: none": {
+		"prefix": "disn",
+		"body": [
+			"display: none;"
+		],
+		"description": "Log output to console"
+    }
+	,
+	"clearfix": {
+		"prefix": "@include clearfix",
+		"body": [
+			"@include clearfix();"
+		],
+		"description": "after clear: both;"
+	},
+	"mobileQuery": {
+		"prefix": "@media mobile",
+		"body": [
+			"@include respondTo(mobile){\n	$0\n}"
+		],
+		"description": "모바일 미디어쿼리"
+	},
+	"tabletQuery": {
+		"prefix": "@media tablet",
+		"body": [
+			"@include respondTo(tablet){\n	$0\n}"
+		],
+		"description": "테블릿 미디어쿼리"
+	},
+	"customQuery": {
+		"prefix": "@media custom",
+		"body": [
+			"@include respondTo($1){\n	$0\n}"
+		],
+		"description": "커스텀 미디어쿼리 px 제외 숫자만 작성."
+	},
+	"minmaxQuery": {
+		"prefix": "@media min~max",
+		"body": [
+			"@include respondToMinMax($1,$2){\n	$0\n}"
+		],
+		"description": "커스텀 미디어쿼리 px 제외 숫자만 작성."
+	},
+  "cssIcon": {
+		"prefix": "@cssIcon(delete,plus)",
+		"body": [
+			"@include cssIcon(${1|delete,plus|}){",
+				"\twidth: $2;",
+				"\theight:$3;",
+				"\tbackground: $0;",
+			"}"
+		],
+		"description": "cssIcon-delete"
+	},
+	"cssIcon_linearrow": {
+		"prefix": "@cssIcon(linearrow)",
+		"body": [
+			"@include cssIcon(linearrow, $$width:$1px, $$height:$2px){",
+			"\tbackground: $0;",
+			"}"
+		],
+		"description": "cssIcon-delete"
+  },
+
+  /* color Start */
+	"color-blue_medium": { "prefix": "$blue_medium[#1A5AFF]", "body": ["$$blue_medium"], "description": ""},
+	"color-bg": { "prefix": "$bg[#0C0A27]", "body": ["$$bg"], "description": ""},
+  /* color End */
+
+	/* image path */
+	"url_common": { "prefix": "$url_common", "body": ["url($$url_common + '$1')"], "description": ""},
+}

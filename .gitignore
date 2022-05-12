@@ -121,5 +121,6 @@ build/index.html
 build/css
 build/js
 build/img
+build/html
 
 .idea

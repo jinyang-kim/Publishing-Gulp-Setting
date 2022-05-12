@@ -1,6 +1,5 @@
 /* Gulp Modules */
 import gulp from "gulp";
-import gpug from "gulp-pug";
 import del from "del";
 import gwebserver from "gulp-webserver";
 import gimagemin from "gulp-imagemin";
@@ -15,6 +14,7 @@ import ghPages from "gulp-gh-pages";
 import htmlExtend from "gulp-html-extend";
 import htmlMin from "gulp-htmlmin";
 import gsprite from "gulp.spritesmith";
+import gconcat from "gulp-concat";
 
 const sass = require('gulp-sass')(require('sass'));
 
@@ -26,11 +26,6 @@ const routes = {
 		js: "build/js",
 		img: "build/img",
 		index: "build/index.html"
-	},
-	pug: {
-		watch: "src/**/*.pug",
-		src: "src/*.pug",
-		dest: "build/pug"
 	},
 	html: {
 		watch: "src/html/**/*.html",
@@ -61,7 +56,8 @@ const routes = {
 	},
 	js: {
 		watch: "src/js/**/*.js",
-		src: "src/js/main.js",
+		// src: "src/js/main.js",
+		src: "src/js/**/*.js",
 		dest: "build/js"
 	}
 	// js: {
@@ -79,7 +75,7 @@ const webserver = () =>
 		.src("build")
 		.pipe(plumber())
 		.pipe(gwebserver({ 
-			// port: 8080,
+			port: 8080,
 			livereload : true, 
 			open: true 
 		}));
@@ -92,7 +88,6 @@ const gh = () =>
 const watch = () => {
 	gulp.watch(routes.index_html.watch, index_html);
 	gulp.watch(routes.html.watch, html);
-	gulp.watch(routes.pug.watch, pug);
 	gulp.watch(routes.scss.watch, styles);
 	gulp.watch(routes.js.watch, js);
 	// gulp.watch(routes.img.src, img);
@@ -118,17 +113,11 @@ const html = () =>
     .pipe(htmlMin({ collapseWhitespace: false }))
     .pipe(gulp.dest(routes.html.dest));
 
-const pug = () =>
-	gulp
-		.src(routes.pug.src)
-		.pipe(plumber())
-		.pipe(gpug())
-		.pipe(gulp.dest(routes.pug.dest));
-
 const js = () => 
 	gulp	
 		.src(routes.js.src)
 		.pipe(plumber())
+		// .pipe(sourcemaps.init())
 		.pipe(bro({
 			transform: [
 				// babelify.configure({ presets: ["es2015"] }),
@@ -137,7 +126,9 @@ const js = () =>
 				babelify.configure({ presets: ["@babel/preset-env"] })
 			]
 		}))
+		.pipe(gconcat('common.js'))
 		.pipe(uglify())
+		// .pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest(routes.js.dest));
 
 const img = () => 
@@ -172,7 +163,7 @@ const styles = () =>
 /* Gulp Builds */
 const prepare = gulp.series([clean, img, sprite]);
 
-const assets = gulp.series([pug, index_html, html, styles, js]);
+const assets = gulp.series([index_html, html, styles, js]);
 
 const live = gulp.parallel([webserver, watch]);
 
