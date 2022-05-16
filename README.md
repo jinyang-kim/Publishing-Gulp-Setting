@@ -69,7 +69,12 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * cd ../../                       
   * gulp deploy 
 
-**5. Include Library Files**
+**5. Web Fonts**
+- 
+* Pretendard
+* NotoSans
+
+**6. Include Library Files**
 - 
 * HTML 작업 진행 시 필요한 기본 Library Files (사용자 선택에 따라서 포함을 안시켜도 됩니다.)
   * html5shiv.js
