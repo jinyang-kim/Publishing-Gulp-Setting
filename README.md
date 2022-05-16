@@ -12,50 +12,50 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 
 **1. 필수 설치 (required)**
 -
-1) node.js와 npm이 먼저 미리 설치되어 있어야 한다.
- * [https://nodejs.org/ko/](https://nodejs.org/ko/) 페이지에서 LTS 버전으로 설치
- * node 설치 확인
-   * node -v
-   * npm -v
-2) gulp 설치
- * npm version : npm install gulp-cli -g
- * yarn version : yarn add gulp-cli
- * gulp 설치 확인 : gulp -v
-3) gulp 실행 명령어
- * gulp : gulp task_name;
- * yarn : yarn task_name;
-4) 프로젝트 불러왔을 경우 (필수)
- * 프로젝트를 불러왔을 경우, node_module이 설치되지 않았기 때문에 Gulp 프로젝트가 실행되지 않습니다.
- * 프로젝트 저장 시 node_modules, Compile된 파일들은 저장소에 들어가지 않아도 되는 불필요한 파일이기 때문에 .gitignore 파일에서 제외시켜둡니다.
- * Terminal에 npm install 명령어를 입력하면 package.json에 들어있는 정보를 읽어서 프로젝트에 필요한 node_module들을 설치합니다.
+* node.js와 npm이 먼저 미리 설치되어 있어야 한다.
+  * [https://nodejs.org/ko/](https://nodejs.org/ko/) 페이지에서 LTS 버전으로 설치
+  * node 설치 확인
+    * node -v
+    * npm -v
+* gulp 설치
+  * npm version : npm install gulp-cli -g
+  * yarn version : yarn add gulp-cli
+  * gulp 설치 확인 : gulp -v
+* gulp 실행 명령어
+  * gulp : gulp task_name;
+  * yarn : yarn task_name;
+* 프로젝트 불러왔을 경우 (필수)
+  * 프로젝트를 불러왔을 경우, node_module이 설치되지 않았기 때문에 Gulp 프로젝트가 실행되지 않습니다.
+  * 프로젝트 저장 시 node_modules, Compile된 파일들은 저장소에 들어가지 않아도 되는 불필요한 파일이기 때문에 .gitignore 파일에서 제외시켜둡니다.
+  * Terminal에 npm install 명령어를 입력하면 package.json에 들어있는 정보를 읽어서 프로젝트에 필요한 node_module들을 설치합니다.
 
 **2. 프로젝트 경로 (Directory)**
 - 
 * gulp_setting
-    * build (Compile Files)
-     * _lib / js, scss 파일로 외부에서 파일은 별도 관리 처리 (gulp task에서 제외시키기 위해서 별도 폴더 구성처리)
-     * fonts (Web Fonts)
-     * img (src/img에 있는 이미지 파일을 경량화 처리한 파일들이 생성됩니다.)
-     * js (src/js에 있는 js 파일을 압축한 파일 common.js 및 src/작성한 js 경량화 처리가된 파일들이 생성됩니다.)
-    * src (원본 소스 파일)
-      * _components (HTML Include Components)
-      * html (HTML)
-      * img (Images) / gulp 첫 실행 시 해당 경로에 있는 이미지들을 gulp-imagemin을 통해서 경령화 처리 후 build/img 경로에 이미지가 생성됩니다.
-        * 이미지 경량화 처리는 gulp 첫 실행 시에만 작업 처리를 하기 때문에 이미지가 추가될 경우, gulp를 재실행 시켜주셔야 경령화 처리가 됩니다.
-        * 이미지 경량화 처리를 watch에 추가하시려면 gulpfile.bable.js에서 function watch에 있는 주석되어 있는 부분을 풀어주시면 이미지 추가 시 경량화 처리가 됩니다.
-        * 단, 이미지가 무겁거나하면 처리하는데 시간이 걸릴 수 있습니다.
-      * common_js (JavaScript) / 해당 경로에 있는 js파일은 common.js 파일 하나로 합쳐집니다.
-      * js (JavaScript) / 공통 js외에 작성할 js 폴더 경로입니다.
-      * scss (SCSS)
-      * _scss (SCSS) / 공통 SCSS 및 variables 폴더
-        * mixins / SCSS Mixin 폴더
-      * index.html (webserver 실행 시 처음 실행되는 html)
-    * .gitignore
-    * .babelrc (하위 디렉토리나 파일에서 특정 플러그인이나 규칙을 실행할 때 사용)
-    * gulpfile.js (Gulp 관리)
-    * gulpfile.babel.js (Gulp JavaScript 관리)
-    * package.json (node package 관리)
-    * README.md
+  * build (Compile Files)
+    * _lib / js, scss 파일로 외부에서 파일은 별도 관리 처리 (gulp task에서 제외시키기 위해서 별도 폴더 구성처리)
+    * fonts (Web Fonts)
+    * img (src/img에 있는 이미지 파일을 경량화 처리한 파일들이 생성됩니다.)
+    * js (src/js에 있는 js 파일을 압축한 파일 common.js 및 src/작성한 js 경량화 처리가된 파일들이 생성됩니다.)
+  * src (원본 소스 파일)
+    * _components (HTML Include Components)
+    * html (HTML)
+    * img (Images) / gulp 첫 실행 시 해당 경로에 있는 이미지들을 gulp-imagemin을 통해서 경령화 처리 후 build/img 경로에 이미지가 생성됩니다.
+      * 이미지 경량화 처리는 gulp 첫 실행 시에만 작업 처리를 하기 때문에 이미지가 추가될 경우, gulp를 재실행 시켜주셔야 경령화 처리가 됩니다.
+      * 이미지 경량화 처리를 watch에 추가하시려면 gulpfile.bable.js에서 function watch에 있는 주석되어 있는 부분을 풀어주시면 이미지 추가 시 경량화 처리가 됩니다.
+      * 단, 이미지가 무겁거나하면 처리하는데 시간이 걸릴 수 있습니다.
+    * common_js (JavaScript) / 해당 경로에 있는 js파일은 common.js 파일 하나로 합쳐집니다.
+    * js (JavaScript) / 공통 js외에 작성할 js 폴더 경로입니다.
+    * scss (SCSS)
+    * _scss (SCSS) / 공통 SCSS 및 variables 폴더
+      * mixins / SCSS Mixin 폴더
+    * index.html (webserver 실행 시 처음 실행되는 html)
+  * .gitignore
+  * .babelrc (하위 디렉토리나 파일에서 특정 플러그인이나 규칙을 실행할 때 사용)
+  * gulpfile.js (Gulp 관리)
+  * gulpfile.babel.js (Gulp JavaScript 관리)
+  * package.json (node package 관리)
+  * README.md
 
 **3. 파일 추가 관련**
 - 
