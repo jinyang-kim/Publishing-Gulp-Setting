@@ -54,17 +54,18 @@ const routes = {
 	css: {
 		src: "build/css"
 	},
+	common_js: {
+		watch: "src/common_js/**/*.js",
+		// src: "src/js/main.js",
+		src: "src/common_js/**/*.js",
+		dest: "build/js"
+	},
 	js: {
 		watch: "src/js/**/*.js",
 		// src: "src/js/main.js",
 		src: "src/js/**/*.js",
 		dest: "build/js"
 	}
-	// js: {
-	// 	warch: "src/js/**/*.js",
-	// 	src: "src/js/*",
-	// 	dest: "build/js"
-	// }
 }
 
 /* Gulp Tasks */
@@ -89,6 +90,7 @@ const watch = () => {
 	gulp.watch(routes.index_html.watch, index_html);
 	gulp.watch(routes.html.watch, html);
 	gulp.watch(routes.scss.watch, styles);
+	gulp.watch(routes.common_js.watch, common_js);
 	gulp.watch(routes.js.watch, js);
 	// gulp.watch(routes.img.src, img);
 }
@@ -113,6 +115,24 @@ const html = () =>
     .pipe(htmlMin({ collapseWhitespace: false }))
     .pipe(gulp.dest(routes.html.dest));
 
+const common_js = () => 
+	gulp	
+		.src(routes.common_js.src)
+		.pipe(plumber())
+		// .pipe(sourcemaps.init())
+		.pipe(bro({
+			transform: [
+				// babelify.configure({ presets: ["es2015"] }),
+				// babelify.configure({ presets: ["@babel/preset-env"] }),
+				// [ 'uglifyify', { global: true } ]
+				babelify.configure({ presets: ["@babel/preset-env"] })
+			]
+		}))
+		.pipe(gconcat('common.js'))
+		.pipe(uglify())
+		// .pipe(sourcemaps.write("./"))
+		.pipe(gulp.dest(routes.js.dest));
+
 const js = () => 
 	gulp	
 		.src(routes.js.src)
@@ -126,7 +146,6 @@ const js = () =>
 				babelify.configure({ presets: ["@babel/preset-env"] })
 			]
 		}))
-		.pipe(gconcat('common.js'))
 		.pipe(uglify())
 		// .pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest(routes.js.dest));
@@ -163,7 +182,7 @@ const styles = () =>
 /* Gulp Builds */
 const prepare = gulp.series([clean, img, sprite]);
 
-const assets = gulp.series([index_html, html, styles, js]);
+const assets = gulp.series([index_html, html, styles, common_js, js]);
 
 const live = gulp.parallel([webserver, watch]);
 
