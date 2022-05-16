@@ -23,6 +23,17 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * gulp 설치 확인 : gulp -v
 * gulp 실행 명령어
   * gulp : gulp task_name;
+    * gulp build / 해당 gulp 실행 시 build 처리만 되며, webserver 작동하지 않습니다. build/html, build/index.html에 접근하여 직접 파일을 오픈해야 확인 가능합니다.
+      * build 폴더 경로 파일 삭제 처리
+      * src/img 경량화 처리
+      * src/img sprite 처리
+      * html 경량화 처리
+      * scss > css compile, 경량화 처리
+      * js > common.js 파일 압축, 경량화, babel 처리
+    * gulp dev / build task에 추가로
+      * webserver 작동 및 html, js, css watch 작업 처리
+    * gulp deploy / github 환경 사용 시 해당 repository에 배포 진행
+      * Error 발생 시 아래 4. Gulp Deploy Error 내용 확인해주세요.
   * yarn : yarn task_name;
 * 프로젝트 불러왔을 경우 (필수)
   * 프로젝트를 불러왔을 경우, node_module이 설치되지 않았기 때문에 Gulp 프로젝트가 실행되지 않습니다.
