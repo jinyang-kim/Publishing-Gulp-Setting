@@ -25,18 +25,22 @@ const routes = {
 		css: "build/css",
 		js: "build/js",
 		img: "build/img",
-		index: "build/index.html"
+		index: "build/**/*.html"
 	},
 	html: {
-		watch: "src/html/**/*.html",
-		src: "src/html/**/*.html",
-		except: "!src/html/_components/*.html",
-		dest: "build/html"
+		// watch: "src/html/**/*.html",
+		// src: "src/html/**/*.html",
+		watch: "src/**/*.html",
+		src: "src/**/*.html",
+		// except: "!src/html/_components/*.html",
+		except: "!src/_components/**/*.html",
+		// dest: "build/html"
+		dest: "build/"
 	},
 	index_html: {
 		watch: "src/index.html",
 		src: "src/index.html",
-		dest: "build"
+		dest: "build/"
 	},
 	img: {
 		src: "src/img/**/*",
