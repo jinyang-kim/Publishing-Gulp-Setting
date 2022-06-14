@@ -25,17 +25,12 @@ const routes = {
 		css: "build/css",
 		js: "build/js",
 		img: "build/img",
-		index: "build/**/*.html"
+		index: "build/index.html"
 	},
 	html: {
-		// watch: "src/html/**/*.html",
-		// src: "src/html/**/*.html",
-		watch: "src/**/*.html",
-		src: "src/**/*.html",
-		// except: "!src/html/_components/*.html",
-		except: "!src/_components/**/*.html",
-		// dest: "build/html"
-		dest: "build/"
+		watch: "src/html/*.html",
+		src: "src/html/*.html",
+		dest: "build/html"
 	},
 	index_html: {
 		watch: "src/index.html",
@@ -60,13 +55,11 @@ const routes = {
 	},
 	common_js: {
 		watch: "src/common_js/**/*.js",
-		// src: "src/js/main.js",
 		src: "src/common_js/**/*.js",
 		dest: "build/js"
 	},
 	js: {
 		watch: "src/js/**/*.js",
-		// src: "src/js/main.js",
 		src: "src/js/**/*.js",
 		dest: "build/js"
 	}
@@ -111,7 +104,7 @@ const index_html = () =>
 
 const html = () =>
 	gulp
-		.src([routes.html.src, routes.html.except])
+		.src(routes.html.src)
 		.pipe(plumber())
 		.pipe(
       htmlExtend({ annotations:false, verbose:false })
