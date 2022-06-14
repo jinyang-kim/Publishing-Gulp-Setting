@@ -66,7 +66,8 @@ const routes = {
 }
 
 /* Gulp Tasks */
-const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index, ".publish"]);
+const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index]);
+const deploy_clean = () => del([".publish"]);
 
 const webserver = () => 
 	gulp
@@ -185,4 +186,4 @@ const live = gulp.parallel([webserver, watch]);
 
 export const build = gulp.series([prepare, assets]);
 export const dev = gulp.series([build, live]);
-export const deploy = gulp.series([build, gh, clean]);
+export const deploy = gulp.series([build, gh, deploy_clean]);
