@@ -82,7 +82,7 @@ const webserver = () =>
 		.pipe(gwebserver({ 
 			port: 8080,
 			livereload : true, 
-			open: true 
+			open: true
 		}));
 
 const gh = () => 

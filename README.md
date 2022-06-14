@@ -95,10 +95,3 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * jquery-3.6.0.min.js
   * respond.min.js
   * lazysizes.min.js
-
-**7. Project Branch**
--
-* Publishing Project 유형에 따라 Branch Select
-  * type1-pub: gulp webserver를 활용 및 baseDir를 설정하여 프로젝트 진행 시 WAS등 웹서버에 등록하여 퍼블 페이지를 확인하는 경우
-  * type2-pub: local에서는 webserver 및 baseDir를 활용하지만, build 폴더 공유 시 html 파일을 사용자가 직업 열어서 확인하는 경우
-    * build에서 직접 파일을 확인하는 경우, baseDir를 지정할 수 없어서 해당 경로에 있는 파일 기준으로 상대경로를 지정
