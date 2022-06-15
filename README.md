@@ -2,6 +2,9 @@
 
 Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니다.
 - Gulp에서 JavaScript를 사용하기 위해 gulp파일을 babel을 이용해 컴파일합니다.
+- 해당 Project는 local 환경에서 작업 또는 /build/**/*.html 폴더내에서 직접 실행하여 페이지를 확인할 수 있는 Publishing Project입니다.
+  * resource 경로 설정 시 /build/index.html, /build/page/index.html 파일을 확인하여 경로 작성 시 참고 부탁드립니다.
+  * /build/index.html, /build/page/index.html을 폴더에서 직접 실행 시 페이지 확인이 가능합니다.
 
 * Gulp JS Site (URL) : [https://gulpjs.com/](https://gulpjs.com/)
 * Gulp Packages Searching : https://www.npmjs.com/
@@ -32,6 +35,8 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
       * js > common.js 파일 압축, 경량화, babel 처리
     * gulp dev / build task에 추가로
       * webserver 작동 및 html, js, css watch 작업 처리
+      * localhost:8080(default port:8080 / port 변경시 gulpfile.babel.js:77 port 변경)
+      * localhost:8080/index.html, localhost:8080/html/index.html
     * gulp deploy / github 환경 사용 시 해당 repository에 배포 진행
       * Error 발생 시 아래 4. Gulp Deploy Error 내용 확인해주세요.
   * yarn : yarn task_name;
