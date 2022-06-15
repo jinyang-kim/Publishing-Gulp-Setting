@@ -1,7 +1,7 @@
 /* Gulp Modules */
 import gulp from "gulp";
 import del from "del";
-import gwebserver from "gulp-webserver";
+import gconnect from "gulp-connect";
 import gimagemin from "gulp-imagemin";
 import autoprefixer from "gulp-autoprefixer";
 import csso from "gulp-csso";
@@ -28,39 +28,34 @@ const routes = {
 		index: "build/index.html"
 	},
 	html: {
-		watch: "src/html/*.html",
-		src: "src/html/*.html",
-		dest: "build/html"
-	},
-	index_html: {
-		watch: "src/index.html",
-		src: "src/index.html",
+		watch: "html/**/*.html",
+		src: "html/**/*.html",
 		dest: "build/"
 	},
 	img: {
-		src: "src/img/**/*",
+		src: "static/asset/img/**/*",
 		dest: "build/img"
 	},
 	img_sprite: {
-		src: "src/img/**/*.png",
+		src: "static/asset/src/img/**/*",
 		dest: "build/img_sprite"
 	},
 	scss: {
-		watch: "src/scss/**/*.scss",
-		src: "src/scss/*",
+		watch: "static/asset/scss/**/*.scss",
+		src: "static/asset/scss/**/*.scss",
 		dest: "build/css"
 	},
 	css: {
 		src: "build/css"
 	},
 	common_js: {
-		watch: "src/common_js/**/*.js",
-		src: "src/common_js/**/*.js",
+		watch: "static/asset/common_js/**/*.js",
+		src: "static/asset/common_js/**/*.js",
 		dest: "build/js"
 	},
 	js: {
-		watch: "src/js/**/*.js",
-		src: "src/js/**/*.js",
+		watch: "static/asset/js/**/*.js",
+		src: "static/asset/js/**/*.js",
 		dest: "build/js"
 	}
 }
@@ -69,15 +64,20 @@ const routes = {
 const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index]);
 const deploy_clean = () => del([".publish"]);
 
-const webserver = () => 
-	gulp
-		.src("build")
-		.pipe(plumber())
-		.pipe(gwebserver({ 
-			port: 8080,
-			livereload : true, 
-			open: true
-		}));
+const connect = () => 
+	gconnect.server({
+		root: './',
+		livereload: true,
+		port: 8000
+	});
+	// gulp
+	// 	.src("build")
+	// 	.pipe(plumber())
+	// 	.pipe(gwebserver({ 
+	// 		port: 8080,
+	// 		livereload : true, 
+	// 		open: true
+	// 	}));
 
 const gh = () => 
 	gulp
@@ -85,23 +85,12 @@ const gh = () =>
 		.pipe(ghPages());
 
 const watch = () => {
-	gulp.watch(routes.index_html.watch, index_html);
 	gulp.watch(routes.html.watch, html);
 	gulp.watch(routes.scss.watch, styles);
 	gulp.watch(routes.common_js.watch, common_js);
 	gulp.watch(routes.js.watch, js);
 	// gulp.watch(routes.img.src, img);
 }
-
-const index_html = () =>
-	gulp
-		.src(routes.index_html.src)
-		.pipe(plumber())
-		.pipe(
-      htmlExtend({ annotations:false, verbose:false })
-    )
-    .pipe(htmlMin({ collapseWhitespace: false }))
-    .pipe(gulp.dest(routes.index_html.dest));
 
 const html = () =>
 	gulp
@@ -180,9 +169,9 @@ const styles = () =>
 /* Gulp Builds */
 const prepare = gulp.series([clean, img, sprite]);
 
-const assets = gulp.series([index_html, html, styles, common_js, js]);
+const assets = gulp.series([html, styles, common_js, js]);
 
-const live = gulp.parallel([webserver, watch]);
+const live = gulp.parallel([connect, watch]);
 
 export const build = gulp.series([prepare, assets]);
 export const dev = gulp.series([build, live]);
