@@ -26,15 +26,16 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * gulp 설치 확인 : gulp -v
 * gulp 실행 명령어
   * gulp : gulp task_name;
-    * gulp build / 해당 gulp 실행 시 build 처리만 되며, webserver 작동하지 않습니다. build/html, build/index.html에 접근하여 직접 파일을 오픈해야 확인 가능합니다.
+    * gulp build / 해당 gulp 실행 시 build 처리만 되며, webserver 작동하지 않습니다.
       * build 폴더 경로 파일 삭제 처리
-      * src/img 경량화 처리
-      * src/img sprite 처리
+      * /static/asset/img 경량화 처리
+      * /static/asset/img sprite 처리
       * html 경량화 처리
       * scss > css compile, 경량화 처리
       * js > common.js 파일 압축, 경량화, babel 처리
     * gulp dev / build task에 추가로
       * webserver 작동 및 html, js, css watch 작업 처리
+      * localhost:8080(default port:8080) 접근 하여 페이지 확인 가능 (port 정보는 /gulpfile.babel.js:71에서 수정 후 gulp 재빌드 시 변경된 정보로 접근 가능합니다.)
     * gulp deploy / github 환경 사용 시 해당 repository에 배포 진행
       * Error 발생 시 아래 4. Gulp Deploy Error 내용 확인해주세요.
   * yarn : yarn task_name;
@@ -49,21 +50,27 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
   * build (Compile Files)
     * _lib / js, scss 파일로 외부에서 파일은 별도 관리 처리 (gulp task에서 제외시키기 위해서 별도 폴더 구성처리)
     * fonts (Web Fonts)
-    * img (src/img에 있는 이미지 파일을 경량화 처리한 파일들이 생성됩니다.)
-    * js (src/js에 있는 js 파일을 압축한 파일 common.js 및 src/작성한 js 경량화 처리가된 파일들이 생성됩니다.)
-  * src (원본 소스 파일)
-    * _components (HTML Include Components)
-    * html (HTML)
-    * img (Images) / gulp 첫 실행 시 해당 경로에 있는 이미지들을 gulp-imagemin을 통해서 경령화 처리 후 build/img 경로에 이미지가 생성됩니다.
-      * 이미지 경량화 처리는 gulp 첫 실행 시에만 작업 처리를 하기 때문에 이미지가 추가될 경우, gulp를 재실행 시켜주셔야 경령화 처리가 됩니다.
-      * 이미지 경량화 처리를 watch에 추가하시려면 gulpfile.bable.js에서 function watch에 있는 주석되어 있는 부분을 풀어주시면 이미지 추가 시 경량화 처리가 됩니다.
-      * 단, 이미지가 무겁거나하면 처리하는데 시간이 걸릴 수 있습니다.
-    * common_js (JavaScript) / 해당 경로에 있는 js파일은 common.js 파일 하나로 합쳐집니다.
-    * js (JavaScript) / 공통 js외에 작성할 js 폴더 경로입니다.
-    * scss (SCSS)
-    * _scss (SCSS) / 공통 SCSS 및 variables 폴더
-      * mixins / SCSS Mixin 폴더
-    * index.html (webserver 실행 시 처음 실행되는 html)
+    * img (/static/asset/img에 있는 이미지 파일을 경량화 처리한 파일들이 생성됩니다.)
+    * js (/static/asset/js에 있는 js 파일을 압축한 파일 common.js 및 src/작성한 js 경량화 처리가된 파일들이 생성됩니다.)
+    * css (/static/asset/scss에 있는 scss파일들을 컴파일하여 경량화 처리가된 css 파일들이 생성됩니다.)
+    * html (/html/**/*.html 파일을 컴파일하여 html 파일들이 생성됩니다.)
+  * html (HTML 원본 소스 파일)
+    * _components (동일한 경로에 위치한 HTML Include Components)
+    * page
+      * _components (동일한 경로에 위치한 HTML Include Components)
+      * index.html
+    * index.html
+  * static (Resource 원본 소스 파일)
+    * asset
+      * img (Images) / gulp 첫 실행 시 해당 경로에 있는 이미지들을 gulp-imagemin을 통해서 경령화 처리 후 build/img 경로에 이미지가 생성됩니다.
+        * 이미지 경량화 처리는 gulp 첫 실행 시에만 작업 처리를 하기 때문에 이미지가 추가될 경우, gulp를 재실행 시켜주셔야 경령화 처리가 됩니다.
+        * 이미지 경량화 처리를 watch에 추가하시려면 gulpfile.bable.js에서 function watch에 있는 주석되어 있는 부분을 풀어주시면 이미지 추가 시 경량화 처리가 됩니다.
+        * 단, 이미지가 무겁거나하면 처리하는데 시간이 걸릴 수 있습니다.
+      * common_js (JavaScript) / 해당 경로에 있는 js파일은 common.js 파일 하나로 합쳐집니다.
+      * js (JavaScript) / 공통 js외에 작성할 js 폴더 경로입니다.
+      * scss (SCSS)
+      * _scss (SCSS) / 공통 SCSS 및 variables 폴더
+        * mixins / SCSS Mixin 폴더
   * .gitignore
   * .babelrc (하위 디렉토리나 파일에서 특정 플러그인이나 규칙을 실행할 때 사용)
   * gulpfile.js (Gulp 관리)
