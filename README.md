@@ -2,6 +2,9 @@
 
 Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니다.
 - Gulp에서 JavaScript를 사용하기 위해 gulp파일을 babel을 이용해 컴파일합니다.
+- 해당 Project는 local 환경에서 작업 또는 Web Server에 Source를 올려서 확인하는 Publishing Project입니다.
+  * resource 경로 설정 시 /build/css, /build/js 와 같이 설정해주시면 됩니다. (예시 index.html 파일에서 경로 확인하여 작업 시 참고 부탁드립니다.)
+  * /build/index.html, /build/page/index.html을 폴더에서 직접 실행 시 경로 오류로 확인이 불가능합니다.
 
 * Gulp JS Site (URL) : [https://gulpjs.com/](https://gulpjs.com/)
 * Gulp Packages Searching : https://www.npmjs.com/

@@ -70,14 +70,6 @@ const connect = () =>
 		livereload: true,
 		port: 8000
 	});
-	// gulp
-	// 	.src("build")
-	// 	.pipe(plumber())
-	// 	.pipe(gwebserver({ 
-	// 		port: 8080,
-	// 		livereload : true, 
-	// 		open: true
-	// 	}));
 
 const gh = () => 
 	gulp
