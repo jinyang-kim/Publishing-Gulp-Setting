@@ -61,14 +61,14 @@ const routes = {
 }
 
 /* Gulp Tasks */
-const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index]);
+const clean = () => del([routes.build.html, routes.build.css, routes.build.js, routes.build.img, routes.build.index, "build/_components", "build/page"]);
 const deploy_clean = () => del([".publish"]);
 
 const connect = () => 
 	gconnect.server({
 		root: './',
 		livereload: true,
-		port: 8000
+		port: 8080
 	});
 
 const gh = () => 
@@ -86,7 +86,7 @@ const watch = () => {
 
 const html = () =>
 	gulp
-		.src(routes.html.src)
+		.src([routes.html.src, "!_components,", "!html/_components"])
 		.pipe(plumber())
 		.pipe(
       htmlExtend({ annotations:false, verbose:false })
