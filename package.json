@@ -16,12 +16,13 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.17.7",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
     "@babel/register": "^7.17.7",
     "babelify": "^10.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-bro": "^2.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
@@ -35,12 +36,13 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-webserver": "^0.9.1",
-    "gulp.spritesmith": "^6.12.1",
-    "sass": "^1.49.11"
+    "gulp.spritesmith": "^6.13.0",
+    "sass": "^1.53.0"
   },
   "dependencies": {
-    "del": "^6.0.0",
-    "gulp-htmlmin": "^5.0.1"
+    "del": "^6.1.1",
+    "gulp-htmlmin": "^5.0.1",
+    "postcss": "^8.4.14"
   },
   "browserslist": [
     "> 1%",

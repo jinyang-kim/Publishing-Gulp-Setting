@@ -1,7 +1,7 @@
 ## Publishing Gulp 환경세팅
 
 Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니다.
-- Gulp에서 JavaScript를 사용하기 위해 gulp파일을 babel을 이용해 컴파일합니다.
+- Gulp에서 ES6를 사용하며 babel이 필요한 경우, gulpfile.babel.js:121, 136 주석되어 있는걸 풀어서 사용하시면 됩니다.
 - 해당 Project는 local 환경에서 작업 또는 /build/**/*.html 폴더내에서 직접 실행하여 페이지를 확인할 수 있는 Publishing Project입니다.
   * resource 경로 설정 시 /build/index.html, /build/page/index.html 파일을 확인하여 경로 작성 시 참고 부탁드립니다.
   * /build/index.html, /build/page/index.html을 폴더에서 직접 실행 시 페이지 확인이 가능합니다.
@@ -75,7 +75,7 @@ Gulp 환경의 Publishing 작업을 하기 위해 만들어진 Repository 입니
 
 **3. 파일 추가 관련**
 - 
-* 파일에서 언더스코어(_)를 붙이면 SASS한테 자기들을 Compile하지말고 사용만 하라고 알려주는것
+* 파일에서 언더스코어(_)를 붙이면 Compile하지말고 사용만하는 소스를 의미하는 규칙입니다.
 
 **4. Gulp Deploy Error**
 - 

@@ -47,3 +47,122 @@ img{
 b{
 	font-weight: 700;
 }
+
+// layer-popup
+.popup-open{
+  overflow: hidden;
+}
+.popup-backdrop{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+  opacity: .5;
+  z-index: 1000;
+}
+
+.layer{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1050;
+  @include respondTo(mobile){
+    text-align: initial;
+  }
+  &:before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    @include respondTo(mobile){
+      display: none;
+    }
+  }
+  &-popup{
+    display: inline-block;
+    position: relative;
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 20px 20px 0px 0px;
+    text-align: left;
+    vertical-align: middle;
+    opacity: 0;
+    @include respondTo(mobile){
+      position: fixed;
+      bottom: 0;
+      max-width: 100%;
+    }
+  }
+  .box{
+    .popup{
+      &-body{
+        padding: 24px;
+        background-color: #ffffff;
+        border-radius: 20px 20px 0px 0px;
+        color: #333333;
+        h1{
+          margin: 0;
+          font-size: 30px;
+					color: #333333;
+          text-align: left;
+        }
+        h2{
+          padding-top: 6px;
+          font-size: 20px;
+        }
+        h3{
+          padding-top: 11px;
+          font-size: 15px;
+        }
+        a{
+          display: block;
+          max-width: 192px;
+          margin-top: 35px;
+          padding: 15px 0;
+          background-color: #ce4647 ;
+          border-radius: 40px;
+          font-size: 16px;
+          color: #ffffff;
+          text-align: center;
+        }
+      }
+      &-footer{
+        padding: 23px 16px;
+        background-color: #ffffff;
+				border-top: 1px solid #cccccc;
+        font-size: 14px;
+        font-weight: 400;
+        button{
+          background-color: transparent;
+          border: 0 none;
+          color: rgba(0, 0, 0, 0.5);
+          cursor: pointer;
+          &.close{
+            &-popup{
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.in{
+    .layer-popup{
+      opacity: 1;
+    }
+  }
+}

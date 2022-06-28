@@ -118,14 +118,11 @@ const common_js = () =>
 		.src(routes.common_js.src)
 		.pipe(plumber())
 		// .pipe(sourcemaps.init())
-		.pipe(bro({
-			transform: [
-				// babelify.configure({ presets: ["es2015"] }),
-				// babelify.configure({ presets: ["@babel/preset-env"] }),
-				// [ 'uglifyify', { global: true } ]
-				babelify.configure({ presets: ["@babel/preset-env"] })
-			]
-		}))
+		// .pipe(bro({
+		// 	transform: [
+		// 		babelify.configure({ presets: ['@babel/preset-env'] })
+		// 	]
+		// }))
 		.pipe(gconcat('common.js'))
 		.pipe(uglify())
 		// .pipe(sourcemaps.write("./"))
@@ -136,14 +133,11 @@ const js = () =>
 		.src(routes.js.src)
 		.pipe(plumber())
 		// .pipe(sourcemaps.init())
-		.pipe(bro({
-			transform: [
-				// babelify.configure({ presets: ["es2015"] }),
-				// babelify.configure({ presets: ["@babel/preset-env"] }),
-				// [ 'uglifyify', { global: true } ]
-				babelify.configure({ presets: ["@babel/preset-env"] })
-			]
-		}))
+		// .pipe(bro({
+		// 	transform: [
+		// 		babelify.configure({ presets: ['@babel/preset-env'] })
+		// 	]
+		// }))
 		.pipe(uglify())
 		// .pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest(routes.js.dest));
