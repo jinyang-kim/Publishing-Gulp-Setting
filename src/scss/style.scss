@@ -1,2 +1,39 @@
 @import "./src/_scss/_variables";
 @import "./src/_scss/mixins/utilities";
+
+// image-sprite
+@mixin sprite_image($x, $y, $w, $h) {
+  background-image: url($url_renewal + 'mc_summit/sprites_micro_summit.png');
+  background-repeat: no-repeat;
+  background-size: $w $h;
+  background-position: $x $y;
+  @content;
+  // @content 적용 ex)
+  // @include sprite_mc_summit(-63px, -73px) {
+  //   width: 32px;
+  //   height: 24px;
+  // };
+}
+
+// card-box
+.card-boxs{
+  .card-lists{
+    margin: 0 -15px;
+    .card-lists{
+      display: inline-block;
+      margin-top: 36px;
+      padding: 0 15px;
+      vertical-align: top;
+      box-sizing: border-box;
+    }
+  }
+  .card-box{
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+    margin-top: 36px;
+    border-radius: 14px;
+    background-color: #ffffff;
+    box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 9%);
+  }
+}

@@ -1,4 +1,3 @@
-
 // Accordion
 const accordion = () => {
   $('.accordion .accordion-lists .accordion-list .accordion-tit').click(function () {
@@ -111,3 +110,5 @@ const tabs = () => {
     return false;
   });
 }
+
+// Dropdown
