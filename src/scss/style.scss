@@ -15,6 +15,13 @@
   // };
 }
 
+#wrap{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  // max-width: 1920px;
+}
+
 // card-box
 .card-boxs{
   .card-lists{
@@ -35,5 +42,53 @@
     border-radius: 14px;
     background-color: #ffffff;
     box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 9%);
+  }
+}
+
+@keyframes leftFlow {
+  // from {transform: translateX(0)}
+  // to {transform: translateX(-50%)}
+  from {transform: translateX(0)}
+  to {transform: translateX(-691.5px)}
+}
+@keyframes rightFlow {
+  // from {transform: translateX(0)}
+  // to {transform: translateX(50%)}
+  from {transform: translateX(0)}
+  to {transform: translateX(691.5px)}
+}
+
+// flow-list
+.flow-container{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+// flow-list 총 길이 width 값 입력
+// animation (left, right) left : -(총 길이 width값 절반), right)총 길이 width 값 절반)
+.flow-lists{
+  display: flex;
+  ul{  
+    li{
+      display: inline-block;
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background-color: #cccccc;
+      border-radius: 50%;
+      vertical-align: top;
+      & ~ li{
+        margin-left: 20px;
+      }
+    }
+  }
+  &.flow-left{
+    animation: leftFlow 10s infinite linear;
+  }
+  &.flow-right{
+    animation: rightFlow 10s infinite linear;
   }
 }

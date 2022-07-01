@@ -95,20 +95,33 @@ const tabs = () => {
   $('.tab-content').each(function(i, e){
     $(this).hide();
   });
-  $('.tab-menu ul li').removeClass('acitve'); // tab 메뉴 active class 초기화 처리
+  $('.tab-menu ul li').removeClass('active'); // tab 메뉴 active class 초기화 처리
   $('.tab-menu ul li:first-child').addClass('active').show(); // 첫 번째 탭 활성화 처리
   $('.tab-content:first-child').show();
 
   $(document).on('click', '.tab-menu ul li', function(){
-    $('.tab-menu ul li').removeClass('acitve'); // tab 메뉴 active class 전체 제거 처리
+    $('.tab-menu ul li').removeClass('active'); // tab 메뉴 active class 전체 제거 처리
     $(this).addClass('active'); // tab 메뉴 클릭한 menu active 처리
     $('.tab-content').hide(); // tab 전체 콘텐츠 숨김처리
 
     const activeTab = $(this).find('a').attr('data-tabs'); // 활성화할 tab contents id 정보 확인
-    $(activeTab).fadeIn();
+    $('#' + activeTab).show();
+    // $('#' + activeTab).fadeIn();
 
     return false;
   });
 }
 
 // Dropdown
+const dropDown = () => {
+  $(document).on('click', '.dropdown', function(e){
+    e.stopPropagation();
+    $(this).toggle().addClass('open');
+  });
+
+  // html click시 dropdown open 해제 처리
+  $(document).click(function(){
+    $('.dropdown .dropdown-contents').hide();
+    $('.dropdown').removeClass('open');
+  });
+}

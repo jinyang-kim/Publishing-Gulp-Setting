@@ -69,25 +69,43 @@
     </style>
   </head>
   <body>
-    <img src="img/gulp.svg" alt="gulp">
-    <h1>Awesome Minimalism</h1>
-    <!-- Tabs -->
-    <div class="tab-container">
-      <div class="tab-menu">
-        <ul>
-          <li><a role="tab" data-tabs="tab1">탭1</a></li>
-          <li><a role="tab" data-tabs="tab2">탭2</a></li>
-        </ul>
+    <div id="wrap">
+      <img src="img/gulp.svg" alt="gulp">
+      <h1>Awesome Minimalism</h1>
+      <!-- Tabs -->
+      <div class="tab-container">
+        <div class="tab-menu">
+          <ul>
+            <li><a role="tab" data-tabs="tab1">탭1</a></li>
+            <li><a role="tab" data-tabs="tab2">탭2</a></li>
+          </ul>
+        </div>
+        <div class="tab-contents">
+          <div id="tab1" class="tab-content">탭1 Contents</div>
+          <div id="tab2" class="tab-content">탭2 Contents</div>
+        </div>
       </div>
-      <div class="tab-contents">
-        <div id="tab1" class="tab-content">탭1 Contents</div>
-        <div id="tab2" class="tab-content">탭2 Contents</div>
+      <!-- //Tabs -->
+      <div class="flow-container">
+        <div class="flow-lists flow-left">
+          <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+            <li>F</li>
+            <li>G</li>
+            <li>H</li>
+            <li>I</li>
+            <li>J</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <!-- //Tabs -->
 		<footer>
 			Gulp Publishing Page
 		</footer>
+    </div>
 
     <!-- LayerPopup -->
     <div class="layer" data-expired="2022-07-01">
@@ -113,7 +131,7 @@
 		<script src="js/common.js"></script>
     <script>
       // LayerPopup 실행
-      layerPopup();
+      // layerPopup();
       // tabs 실행
       tabs();
     </script>
